@@ -9,13 +9,62 @@
 
     <link rel="stylesheet" href="../lib/weui.min.css">
     <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="css/demos.css">
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <script src="../js/jquery-weui.js"></script>
+    <script src='../js/swiper.js'></script>
+    <script src="../js/city-picker.js"></script>
+    <script src="../lib/fastclick.js"></script>
   </head>
 
   <body ontouchstart>
 
+  <div class="content">
+    <!--头部导航 开始-->
+    <header class="bar bar-nav">
+      <h1 class="title">乡村树屋</h1>
+    </header>
+
+    <!--图片切换 开始-->
+    <div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+      <div class="swiper-wrapper">
+        <div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../image/test.jpg" alt="">
+              <h2 class="gallerytitle"></h2>
+            </div>
+            <div class="swiper-slide">
+              <img src="../image/test1.jpg" alt="">
+              <h2 class="gallerytitle"></h2>
+            </div>    
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!--搜索框 开始-->
+    <div class="weui_search_bar" id="search_bar">
+      <form class="weui_search_outer">
+        <div class="weui_search_inner">
+          <i class="weui_icon_search"></i>
+          <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
+          <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+        </div>
+        <label for="search_input" class="weui_search_text" id="search_text">
+          <i class="weui_icon_search"></i>
+          <span>搜索</span>
+        </label>
+      </form>
+      <a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>
+    </div>
+
+    <!--列表 开始-->
     <div class="weui_panel weui_panel_access">
-      <div class="weui_panel_hd">图文组合列表</div>
       <div class="weui_panel_bd">
         <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
           <div class="weui_media_hd">
@@ -36,16 +85,23 @@
           </div>
         </a>
       </div>
-      <a class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
     </div>
-    <script src="../lib/jquery-2.1.4.js"></script>
-<script src="../lib/fastclick.js"></script>
-<script>
-  $(function() {
-    FastClick.attach(document.body);
-  });
-</script>
-<script src="../js/jquery-weui.js"></script>
+    <script>
+      var swiper = new Swiper('.zodiac_box', {
+      freeMode:true,freeModeSticky:true,freeModeMomentumRatio: .5,slidesPerView : 'auto'
+      });
+    </script>
+    </div>
+    <script>
+      $(function() {
+        FastClick.attach(document.body);
+      });
+      //banner
+     $(".swiper-container").swiper({
+          loop: true,
+          autoplay: 3000
+        });
+    </script>
 
   </body>
 </html>
