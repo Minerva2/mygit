@@ -9,20 +9,45 @@
      <!--ExtJs框架结束-->
      <script type="text/javascript">
          Ext.onReady(function () {
+         		 //function其实就是js方法，所以alert仍然有用
          	   alert('还是可以用alert');
+         	   
+         	   //ext自己的弹出提示框，还有很多种，具体看ExtJs3.0/examples/message-box/msg-box.html
              Ext.MessageBox.alert('标题', 'Hello World!');
+             
+             //表单的错误提示信息初始化
              Ext.QuickTips.init();
+             
+             //表单错误提示感叹图标显示位置，参数枚举值为"qtip","title","under","side",id(元素id)
 					   Ext.form.Field.prototype.msgTarget = 'side';
 					
 					   //var bd = Ext.getBody();
 					   //bd.createChild({tag: 'h2', html: 'Form 1 - Very Simple'});
+					   
+					   //直接使用new Ext.form.TextField 新建一个文本域
 					   var username = new Ext.form.TextField({
 					   	name:'username',
 					   	fieldLabel:'username',
 					   	maxLength:2,
 					   	maxLengthText:'用户名长度不能超过2',
+					   	blankText: '请输入用户名',
+					   	emptyText: '22',
 					   	allowBlank:false
 					   	});
+					   	/*文本域常用的其他属性还有
+								grow：字段是否自动伸展和收缩，默认为false
+								growMin：收缩的最小宽度
+								growMax：伸展的最大宽度
+								inputType：字段类型默认为text，还可以设置为password
+								maskRe：用于过滤不匹配字符输入的正则表达式
+								minLength：字段允许输入的最小长度
+								minLengthText：最小长度验证失败后显示的提示信息*/
+								
+						 //在ext里，方法也可以赋值给变量！
+						 var clickevent = function (){
+						 		Ext.MessageBox.alert('错误','按钮点击处理');
+						 	}
+					   	
              var form1 = new Ext.FormPanel({
 			        //labelWidth: 75,
 			        url:'',
@@ -31,9 +56,10 @@
 			        //bodyStyle:'padding:5px 5px 0',
 			        //width: 350,
 			        //defaults: {width: 230},
-			        defaultType: 'textfield',
+			        defaultType: 'textfield',  //items的默认类型
 			
-			        items: [username,{
+			        items: [username,						//可以直接填写变量名称
+			        		{
 			                fieldLabel: 'First Name',
 			                name: 'first',
 			                allowBlank:false
@@ -46,8 +72,8 @@
 			            }, {
 			                fieldLabel: 'Email',
 			                name: 'email',
-			                vtype:'email'
-			            }, new Ext.form.TimeField({
+			                vtype:'email'			//数据类型的验证
+			            }, new Ext.form.TimeField({ //时间域
 			                fieldLabel: 'Time',
 			                name: 'time',
 			                minValue: '8:00am',
@@ -56,18 +82,34 @@
 			        ],
 			
 			        buttons: [{
-			            text: 'Save'
+			            text: 'Save',
+			            handler:clickevent  
+			        //handler:执行的是首发事件，click是button这个组件的首发事件。这就是handler的运行方式：
+			        //被某个组件的首要event所触发。handler是一个特殊的listener。
 			        },{
-			            text: 'Cancel'
+			            text: 'Cancel',  //minWidth: 整型，最小宽度。
+			            listeners:{'click':function (){Ext.MessageBox.alert('错误','点击了取消按钮');}}
 			        }]
 			    });
+			    
+			    //创建子窗口-->
 			    var win = new Ext.Window({
 			    	title:'表单',
 			    	items:form1
-			    	//closable:true,
 			    	//width:400,
 			    	//height:400
+			    	/*其他常用属性
+			    	 html: ''.窗体内部显示的html内容。
+						 resizable: true.是否可以调整窗体的大小，这里设置为 true。
+						 modal: true.是否为模态窗体[什么是模态窗体？当你打开这个窗体以后，如果不能对其他的窗体进行操作，那么这个窗体就是模态窗体，否则为非模态窗体]。
+						 closable:true.是否可以关闭，也可以理解为是否显示关闭按钮。
+						 buttonAlign：窗体中button的对齐方式(left、center、right)，默认值为right。 
+						 closeAction："close"释放窗体所占内存，"hide"隐藏窗体，建议使用"hide"。
+						 maximizable: true.是否可以最大化，也可以理解为是否显示最大化按钮。
+						 minimizable: true.是否可以最小化，也可以理解为是否显示最小化按钮。*/
 			    	});
+			    	
+			    	//window的方法show：打开窗体；hide：隐藏窗体；close：关闭窗体
 			    	win.show();
              //form1.render(document.body);
          });
