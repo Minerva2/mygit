@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
-    <title></title>
+    <title>使用extjs创建页面</title>
      <!--ExtJs框架开始-->
      <script type="text/javascript" src="./Ext/adapter/ext/ext-base.js"></script>
      <script type="text/javascript" src="./Ext/ext-all.js"></script>
@@ -9,16 +9,67 @@
      <!--ExtJs框架结束-->
      <script type="text/javascript">
          Ext.onReady(function () {
-         	   alert('还是可以用alert吧');
+         	   alert('还是可以用alert');
              Ext.MessageBox.alert('标题', 'Hello World!');
-             var win = new Ext.Window({
-             		title:'窗口',
-             		width:500,
-             		height:500,
-             		closable:true,
-             		html:'<h3>ext的学习</h3>'
-             	});
-             	win.show();
+             Ext.QuickTips.init();
+					   Ext.form.Field.prototype.msgTarget = 'side';
+					
+					   //var bd = Ext.getBody();
+					   //bd.createChild({tag: 'h2', html: 'Form 1 - Very Simple'});
+					   var username = new Ext.form.TextField({
+					   	name:'username',
+					   	fieldLabel:'username',
+					   	maxLength:2,
+					   	maxLengthText:'用户名长度不能超过2',
+					   	allowBlank:false
+					   	});
+             var form1 = new Ext.FormPanel({
+			        //labelWidth: 75,
+			        url:'',
+			        //frame:true,
+			        //title: 'Simple Form',
+			        //bodyStyle:'padding:5px 5px 0',
+			        //width: 350,
+			        //defaults: {width: 230},
+			        defaultType: 'textfield',
+			
+			        items: [username,{
+			                fieldLabel: 'First Name',
+			                name: 'first',
+			                allowBlank:false
+			            },{
+			                fieldLabel: 'Last Name',
+			                name: 'last'
+			            },{
+			                fieldLabel: 'Company',
+			                name: 'company'
+			            }, {
+			                fieldLabel: 'Email',
+			                name: 'email',
+			                vtype:'email'
+			            }, new Ext.form.TimeField({
+			                fieldLabel: 'Time',
+			                name: 'time',
+			                minValue: '8:00am',
+			                maxValue: '6:00pm'
+			            })
+			        ],
+			
+			        buttons: [{
+			            text: 'Save'
+			        },{
+			            text: 'Cancel'
+			        }]
+			    });
+			    var win = new Ext.Window({
+			    	title:'表单',
+			    	items:form1
+			    	//closable:true,
+			    	//width:400,
+			    	//height:400
+			    	});
+			    	win.show();
+             //form1.render(document.body);
          });
      </script>
 </head>
