@@ -141,7 +141,7 @@
 				<div class="button_sp_area">
 					<a href="javascript:;" style="margin-left: 55%;"
 						class="weui_btn weui_btn_mini weui_btn_primary">上报</a>
-					<a href="javascript:;"
+					<a href="<%=path%>/add?method=save"
 						class="weui_btn weui_btn_mini weui_btn_default">确定</a>
 				</div>
 			</div>
