@@ -4,7 +4,7 @@
 
 <struts>
 	<package name="struts2" extends="struts-default">  
-         <action name="add" class="sdf.AddQues">  
+         <action name="add" class="sdf.AddQues" method="save">  
              <result>/demos/show.jsp</result>  
          </action>  
      </package>  

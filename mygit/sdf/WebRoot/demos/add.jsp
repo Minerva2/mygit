@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@	taglib prefix="s" uri="/struts-tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -39,6 +40,7 @@
 		<!--头部 结束 -->
 
 		<%-- 表单 开始--%>
+		<form action="<%=path%>/add.action" id="form" method="post" >
 		<div class="bd" style="margin-top: 50px;">
 			<div class="weui_cells">
 				<div class="weui_cell">
@@ -48,12 +50,12 @@
 						</label>
 					</div>
 					<div class="weui_cell_bd weui_cell_primary">
-						<input class="weui_input" placeholder="请输入标题">
+						<input class="weui_input" name="que.title" placeholder="请输入标题">
 					</div>
 				</div>
 				<div class="weui_cell weui_cell_select">
 					<div class="weui_cell_bd weui_cell_primary">
-						<select class="weui_select" name="select1">
+						<select class="weui_select" name="project" id="project">
 							<option selected="" value="0">
 								项目：
 							</option>
@@ -71,7 +73,7 @@
 				</div>
 				<div class="weui_cell weui_cell_select">
 					<div class="weui_cell_bd weui_cell_primary">
-						<select class="weui_select" name="select1">
+						<select class="weui_select" name="insurance" id="insurance">
 							<option selected="" value="0">
 								险种：
 							</option>
@@ -89,7 +91,7 @@
 				</div>
 				<div class="weui_cell weui_cell_select">
 					<div class="weui_cell_bd weui_cell_primary">
-						<select class="weui_select" name="select1">
+						<select class="weui_select" name="type" id="type">
 							<option selected="" value="0">
 								问题类型：
 							</option>
@@ -111,7 +113,7 @@
 				<div class="weui_cells weui_cells_form">
 					<div class="weui_cell">
 						<div class="weui_cell_bd weui_cell_primary">
-							<textarea class="weui_textarea" placeholder="请输入描述" rows="3"></textarea>
+							<textarea id="content" class="weui_textarea" placeholder="请输入描述" rows="3"></textarea>
 							<div class="weui_textarea_counter">
 								<span>0</span>/200
 							</div>
@@ -125,7 +127,7 @@
 						</label>
 					</div>
 					<div class="weui_cell_bd weui_cell_primary">
-						<input class="weui_input" placeholder="请输入填写人">
+						<input class="weui_input" id="wirtten" placeholder="请输入填写人">
 					</div>
 				</div>
 				<div class="weui_cell">
@@ -135,18 +137,16 @@
 						</label>
 					</div>
 					<div class="weui_cell_bd weui_cell_primary">
-						<input class="weui_input" type="tel" placeholder="请输入电话">
+						<input class="weui_input" id="tel" type="tel" placeholder="请输入电话">
 					</div>
 				</div>
 				<div class="button_sp_area">
-					<a href="javascript:;" style="margin-left: 55%;"
-						class="weui_btn weui_btn_mini weui_btn_primary">上报</a>
-					<a href="<%=path%>/add?method=save"
-						class="weui_btn weui_btn_mini weui_btn_default">确定</a>
+					<button type="button" style="margin-left: 55%;" class="weui_btn weui_btn_mini weui_btn_primary">上报</button>
+					<button type="submit" class="weui_btn weui_btn_mini weui_btn_default">确定</button>
 				</div>
 			</div>
 		</div>
-		</div>
+		</form>
 		<%-- 表单 结束--%>
 
 		<%-- 底部菜单 开始--%>
