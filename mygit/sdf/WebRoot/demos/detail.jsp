@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@	taglib prefix="s" uri="/struts-tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -8,7 +9,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<title>问题处理</title>
+		<title>查看问题</title>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport"
@@ -33,18 +34,14 @@
 		<header class="bar bar-nav">
 		<!--<i class="fa fa-arrow-left" style="font-size: 18px;float: left;"></i>-->
 		<h1 class="title">
-			问题标题1
+			<s:property value="que.title" />
 		</h1>
-		<div class="button_sp_area">
-			<a href="<%=path%>/demos/add.jsp"
-				class="weui_btn weui_btn_mini weui_btn_primary"
-				style="float: right; margin-top: 5px;">新增</a>
-		</div>
 		</header>
 		<!--头部 结束 -->
-
+		
 		<%-- 表单 开始--%>
-		<div class="bd" style="margin-top: 50px;">
+		<form action="" id="form" method="post" >
+		<div class="bd">
 			<div class="weui_cells">
 				<div class="weui_cell">
 					<div class="weui_cell_bd weui_cell_primary">
@@ -53,7 +50,7 @@
 						</p>
 					</div>
 					<div class="weui_cell_ft">
-						223201643212
+						<s:property value="que.num" />
 					</div>
 				</div>
 				<div class="weui_cell">
@@ -63,7 +60,17 @@
 						</p>
 					</div>
 					<div class="weui_cell_ft">
-						居民医保
+						<s:property value="que.project" />
+					</div>
+				</div>
+				<div class="weui_cell">
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>
+							问题类型:
+						</p>
+					</div>
+					<div class="weui_cell_ft">
+						<s:property value="que.type" />
 					</div>
 				</div>
 			</div>
@@ -74,58 +81,47 @@
 							描述
 						</h4>
 						<p class="weui_media_desc">
-							由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。
+							<s:property value="que.content" />
 						</p>
 						<ul class="weui_media_info">
 							<li class="weui_media_info_meta">
 								填报人
 							</li>
 							<li class="weui_media_info_meta weui_media_info_meta_extra">
-								万盛区	某某人	74683333
+								<s:property value="que.written" />	<s:property value="que.tel" />
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="weui_cell weui_cell_switch">
-		        <div class="weui_cell_hd weui_cell_primary">是否审核通过</div>
-		        <div class="weui_cell_ft">
-		          <input class="weui_switch" type="checkbox">
-		        </div>
-		      </div>
-		      <div class="weui_cell">
-		        <div class="weui_cell_hd"><label class="weui_label">备注</label></div>
-		        <div class="weui_cell_bd weui_cell_primary">
-		          <input class="weui_input" placeholder="请输入备注">
-		        </div>
-		      </div>
-		      <div class="weui_btn_area">
-		        <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips">确定</a>
-		      </div>
 		</div>
+		</form>
 		<%-- 表单 结束--%>
-		
+
 		<%-- 底部菜单 开始--%>
 		<div class="weui_tabbar">
-        <a href="javascript:;" class="weui_tabbar_item">
-          <div class="weui_tabbar_icon">
-            <img src="<%=path%>/demos/images/icon_nav_cell.png" alt="">
-          </div>
-          <p class="weui_tabbar_label">问题列表</p>
-        </a>
-        <a href="<%=path%>/init.action" class="weui_tabbar_item">
-          <div class="weui_tabbar_icon">
-            <img src="<%=path%>/demos/images/icon_nav_cell.png" alt="">
-          </div>
-          <p class="weui_tabbar_label">草稿箱</p>
-        </a>
-        <a href="javascript:;" class="weui_tabbar_item">
-          <div class="weui_tabbar_icon">
-            <img src="<%=path%>/demos/images/icon_nav_cell.png" alt="">
-          </div>
-          <p class="weui_tabbar_label">统计</p>
-        </a>
-      </div>
-      <%-- 底部菜单 结束--%>
+			<a href="javascript:;" class="weui_tabbar_item">
+				<div class="weui_tabbar_icon">
+					<img src="<%=path%>/demos/images/icon_nav_cell.png" alt="">
+				</div>
+				<p class="weui_tabbar_label">
+					问题列表
+				</p> </a>
+			<a href="javascript:;" class="weui_tabbar_item">
+				<div class="weui_tabbar_icon">
+					<img src="<%=path%>/demos/images/icon_nav_cell.png" alt="">
+				</div>
+				<p class="weui_tabbar_label">
+					草稿箱
+				</p> </a>
+			<a href="javascript:;" class="weui_tabbar_item">
+				<div class="weui_tabbar_icon">
+					<img src="<%=path%>/demos/images/icon_nav_cell.png" alt="">
+				</div>
+				<p class="weui_tabbar_label">
+					统计
+				</p> </a>
+		</div>
+		<%-- 底部菜单 结束--%>
 	</body>
 </html>

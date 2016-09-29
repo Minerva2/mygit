@@ -6,6 +6,12 @@
 	<package name="struts2" extends="struts-default">  
          <action name="add" class="sdf.AddQues" method="save">  
              <result>/demos/show.jsp</result>  
+         </action> 
+         <action name="init" class="sdf.AddQues" method="init">  
+             <result>/demos/show.jsp</result>  
+         </action> 
+         <action name="detail" class="sdf.QuesDetail" method="detail">  
+             <result>/demos/detail.jsp</result>  
          </action>  
      </package>  
 </struts>

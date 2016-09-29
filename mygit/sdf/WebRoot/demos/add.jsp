@@ -55,7 +55,7 @@
 				</div>
 				<div class="weui_cell weui_cell_select">
 					<div class="weui_cell_bd weui_cell_primary">
-						<select class="weui_select" name="project" id="project">
+						<select class="weui_select" name="que.project" id="project">
 							<option selected="" value="0">
 								项目：
 							</option>
@@ -73,7 +73,7 @@
 				</div>
 				<div class="weui_cell weui_cell_select">
 					<div class="weui_cell_bd weui_cell_primary">
-						<select class="weui_select" name="insurance" id="insurance">
+						<select class="weui_select" name="que.insurance" id="insurance">
 							<option selected="" value="0">
 								险种：
 							</option>
@@ -91,7 +91,7 @@
 				</div>
 				<div class="weui_cell weui_cell_select">
 					<div class="weui_cell_bd weui_cell_primary">
-						<select class="weui_select" name="type" id="type">
+						<select class="weui_select" name="que.type" id="type">
 							<option selected="" value="0">
 								问题类型：
 							</option>
@@ -113,7 +113,7 @@
 				<div class="weui_cells weui_cells_form">
 					<div class="weui_cell">
 						<div class="weui_cell_bd weui_cell_primary">
-							<textarea id="content" class="weui_textarea" placeholder="请输入描述" rows="3"></textarea>
+							<textarea id="content" name="que.content" class="weui_textarea" placeholder="请输入描述" rows="3"></textarea>
 							<div class="weui_textarea_counter">
 								<span>0</span>/200
 							</div>
@@ -127,7 +127,7 @@
 						</label>
 					</div>
 					<div class="weui_cell_bd weui_cell_primary">
-						<input class="weui_input" id="wirtten" placeholder="请输入填写人">
+						<input class="weui_input" name="que.written" id="written" placeholder="请输入填写人">
 					</div>
 				</div>
 				<div class="weui_cell">
@@ -137,7 +137,7 @@
 						</label>
 					</div>
 					<div class="weui_cell_bd weui_cell_primary">
-						<input class="weui_input" id="tel" type="tel" placeholder="请输入电话">
+						<input class="weui_input" id="tel" name="que.tel" type="tel" placeholder="请输入电话">
 					</div>
 				</div>
 				<div class="button_sp_area">

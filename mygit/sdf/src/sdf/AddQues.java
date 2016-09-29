@@ -1,12 +1,14 @@
 package sdf;
 
-import java.util.HashMap;
+import java.util.*;
+
 import com.opensymphony.xwork2.ActionSupport;
 import redis.clients.jedis.Jedis;
 
 public class AddQues extends ActionSupport{
 	private String msg = "";
 	private Question que;
+	private List<Map> questions = new ArrayList<Map>();
 	
 	public String save(){
 		try{
@@ -32,15 +34,34 @@ public class AddQues extends ActionSupport{
 			ques.put("tel",this.que.getTel());
 			ques.put("written", this.que.getWritten());
 			ques.put("content", this.que.getContent());
-			jedis.hmset(num, ques);
+			jedis.hmset("question"+num, ques);
 			
 			//保存
 			jedis.save();
+			this.getAll();
 			this.setMsg("success");
 		}catch(Exception e){
 			this.setMsg("error");
 		}
 		return this.SUCCESS;
+	}
+	
+	public String init(){
+		this.getAll();
+		return this.SUCCESS;
+	}
+	
+	public void getAll(){
+		Jedis jedis = new Jedis("localhost");
+		
+		//获取所有的问题
+		Map<String,String> questemp;
+		Set<String> keys = jedis.keys("question*");
+		Iterator i = keys.iterator();
+		while(i.hasNext()){
+			questemp = jedis.hgetAll(i.next().toString());
+			this.getQuestions().add(questemp);
+		}
 	}
 
 	/**
@@ -69,5 +90,19 @@ public class AddQues extends ActionSupport{
 	 */
 	public Question getQue() {
 		return que;
+	}
+
+	/**
+	 * @param questions the questions to set
+	 */
+	public void setQuestions(List<Map> questions) {
+		this.questions = questions;
+	}
+
+	/**
+	 * @return the questions
+	 */
+	public List<Map> getQuestions() {
+		return questions;
 	}
 }

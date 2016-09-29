@@ -2,7 +2,7 @@ package sdf;
 
 public class Question {
 	private String title;
-	private Long num;
+	private String num;
 	private String project;
 	private String insurance;
 	private String type;
@@ -24,14 +24,14 @@ public class Question {
 	/**
 	 * @return the num
 	 */
-	public Long getNum() {
+	public String getNum() {
 		return num;
 	}
 	/**
-	 * @param num the num to set
+	 * @param string the num to set
 	 */
-	public void setNum(Long num) {
-		this.num = num;
+	public void setNum(String string) {
+		this.num = string;
 	}
 	/**
 	 * @return the project
